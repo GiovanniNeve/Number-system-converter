@@ -11,6 +11,8 @@
 *.sln.docstates
 .idea
 cmake-build-debug
+.vscode
+.exe
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
