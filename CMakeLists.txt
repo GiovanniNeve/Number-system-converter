@@ -15,7 +15,7 @@ add_executable(numberSystemConverter
         src/numberConversion/convertToOverTenBase.cpp
         src/numberConversion/convertToUnderTenBase.cpp
         src/numberConversion/convertToTen.cpp
-        src/numberConversion/convertToUnderTenBaseIntger.cpp
+        src/numberConversion/convertToUnderTenBaseFractorial.cpp
         src/include/includeLibrary.h
         )
 
