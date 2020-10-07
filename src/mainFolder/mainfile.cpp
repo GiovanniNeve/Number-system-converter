@@ -21,7 +21,7 @@ int main() {
     
     //** Try condition
     try {
-        std::cout << "\nWARNING: At the moment the number this converter can take only intger numbers,\nfractorial numbers will be implementerd soon.\n\n";
+        std::cout << "\nWARNING: At the moment the number this converter can take fractorial numbers only\nfor 10 to <10 base conversion, fractorial numbers will be implementerd soon.\n\n";
 
         std::string number;
         std::string result;
