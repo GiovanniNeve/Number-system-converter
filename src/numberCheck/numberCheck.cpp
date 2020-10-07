@@ -15,23 +15,27 @@ static void numberCheck(std::string stringNumber, int initialBase, int newBase) 
             if(std::isalpha(c)) {
                 if(c == ',')
                     throw "Error: ',' is not allowed, use ','";
-                //** Get the position of the character in letters   
+
+                //** Get the position of the character in letters
                 char* i = std::find(letters, end, c);
 
-                //** Calculate the value of the character and compare with the base  
-                if((i - letters + 10) > (initialBase - 1)) {
+                //** Calculate the value of the character and compare with the base
+                if ((i-letters+10) > (initialBase-1)) {
                     //** Throw error message
                     throw "Base doesn't contain this number";
                 }
 
             } else {
-                //** Convert char into a string
-                std::string temp(1, c);
-                
-                //** Convert string into int and compare with the base
-                if(std::stoi(temp) > (initialBase - 1)) {
-                    //** Throw error message
-                    throw "Base doesn't contain this number";
+                //** If the character is a dot ì, skip it
+                if(c != '.') {
+                    //** Convert char into a string
+                    std::string temp(1, c);
+
+                    //** Convert string into int and compare with the base
+                    if (std::stoi(temp)>(initialBase-1)) {
+                        //** Throw error message
+                        throw "Base doesn't contain this number";
+                    }
                 }
                 
             }
