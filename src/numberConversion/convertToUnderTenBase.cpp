@@ -1,5 +1,5 @@
 #include "../include/includeLibrary.h"
-#include "convertToUnderTenBaseIntger.cpp"
+#include "convertToUnderTenBaseFractorial.cpp"
 
 //**  Convert decimal number in a base higher than 10
 static std::string convertToUnderTenBase(std::string stringNumber, int newBase) {
@@ -10,16 +10,10 @@ static std::string convertToUnderTenBase(std::string stringNumber, int newBase) 
     float fractorialNumber;
 
     if(stringNumber.find('.', 0) != std::string::npos) {
-        //** Search in the number for the dot and store his iterator
-        size_t dotPosition = stringNumber.find('.', 0);
-        //** Convert the string into intger number
-        intNumber = std::stoi(stringNumber, &dotPosition);
-        //** Erase the intger part of the number
-        stringNumber.erase(0, dotPosition+1);
-        int fractorialNumberLength = stringNumber.length();
         //** Store the fractorial part in a float
-        fractorialNumber = std::stoi(stringNumber)*std::pow(10, -(fractorialNumberLength));
-        fractorialResult = convertFractorial(fractorialNumber, binaryNumber, newBase);
+        fractorialNumber = std::stof(stringNumber);
+        intNumber = int(fractorialNumber);
+        fractorialResult = convertFractorial(fractorialNumber - intNumber, binaryNumber, newBase);
     } else {
         intNumber = std::stoi(stringNumber);
     }
