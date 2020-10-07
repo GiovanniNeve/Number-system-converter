@@ -13,6 +13,8 @@ static void numberCheck(std::string stringNumber, int initialBase, int newBase) 
             
             //** Check if character is an alpha char for > 10 base    
             if(std::isalpha(c)) {
+                if(c == ',')
+                    throw "Error: ',' is not allowed, use ','";
                 //** Get the position of the character in letters   
                 char* i = std::find(letters, end, c);
 
