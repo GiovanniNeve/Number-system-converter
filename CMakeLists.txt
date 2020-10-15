@@ -12,10 +12,9 @@ include_directories(src/include)
 add_executable(numberSystemConverter
         src/mainFolder/mainfile.cpp
         src/numberCheck/numberCheck.cpp
-        src/numberConversion/convertToOverTenBase.cpp
-        src/numberConversion/convertToUnderTenBase.cpp
+        src/numberConversion/convertToNewBase.cpp
         src/numberConversion/convertToTen.cpp
-        src/numberConversion/convertToUnderTenBaseFractorial.cpp
+        src/numberConversion/convertNumberFunction.cpp
         src/include/includeLibrary.h
         )
 
