@@ -1,7 +1,8 @@
+#pragma once
 #include "../include/includeLibrary.h"
 
 //** Multiply input number by the new base
-inline std::string multiplyNumberByBase(std::string stringNumber, int newBase, bool isFractorial) {
+inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase, bool isFractorial) {
     std::string result;
     std::vector<char> numberVector;
     //Limit fractorial digits
@@ -47,7 +48,7 @@ inline std::string multiplyNumberByBase(std::string stringNumber, int newBase, b
 }
 
 //** Devide number by the new base
-inline std::string devideNumberByBase(std::string stringNumber, int newBase) {
+inline std::string devideNumberByBase(std::string& stringNumber, int newBase) {
     std::string result;
     std::vector<char> numberVector;
     int number = std::stoi(stringNumber);
@@ -76,7 +77,7 @@ inline std::string devideNumberByBase(std::string stringNumber, int newBase) {
 }
 
 //** COnvert number to ten base
-inline double convertToTenNumber(std::string number, int initialBase, int length) {
+inline double convertToTenNumber(std::string& number, int initialBase, int length) {
     std::vector<int> decimalNumber;
     double sum = 0;
 
