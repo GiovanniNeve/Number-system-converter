@@ -1,38 +1,5 @@
 #include "../include/includeLibrary.h"
-
-inline double convertToTenNumber(std::string number, int initialBase, int length) {
-    std::vector<int> decimalNumber;
-    double sum = 0;
-
-    //** Loop for each char in the number
-    for (char c : number) {
-
-        //** Check if the number is an alphabet letter
-        if (std::isalpha(c)) {
-            //** If so, find it in the lettes array returning his iterator
-            char* i = std::find(letters, end, c);
-            //** Then calculate his intger value and insert in a vector
-            decimalNumber.push_back(i-letters+10);
-        }
-        else {
-            //** If the number is an actual number convert from char to string
-            std::string temp(1, c);
-            //** Convert string to int and insert in a vector
-            decimalNumber.push_back(std::stoi(temp));
-        }
-
-    }
-
-    //** Loop for each number in the vector
-    for(auto c : decimalNumber) {
-        length -= 1;
-        //** Sum every number multiplied by inital base pow the position of the number
-        sum += (c * std::pow(initialBase, length));
-    }
-
-    //** Convert sum to string
-    return sum;
-}
+#include "convertNumberFunction.cpp"
 
 //** Convert a non decimal number in a decimal number
 static std::string convertToTen(std::string stringNumber, int initialBase) {
