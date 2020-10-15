@@ -1,6 +1,6 @@
 #include "../include/includeLibrary.h"
 
-//** COnvert intger to under ten base
+//** Multiply input number by the new base
 inline std::string multiplyNumberByBase(std::string stringNumber, int newBase, bool isFractorial) {
     std::string result;
     std::vector<char> numberVector;
@@ -46,7 +46,7 @@ inline std::string multiplyNumberByBase(std::string stringNumber, int newBase, b
     return result;
 }
 
-
+//** Devide number by the new base
 inline std::string devideNumberByBase(std::string stringNumber, int newBase) {
     std::string result;
     std::vector<char> numberVector;
@@ -75,6 +75,7 @@ inline std::string devideNumberByBase(std::string stringNumber, int newBase) {
     return result;
 }
 
+//** COnvert number to ten base
 inline double convertToTenNumber(std::string number, int initialBase, int length) {
     std::vector<int> decimalNumber;
     double sum = 0;
