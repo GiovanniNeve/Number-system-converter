@@ -4,9 +4,9 @@
 static void numberCheck(std::string stringNumber, int initialBase, int newBase) {
 
     //** Check if the 2 bases are correct
-    if(initialBase > lettersLength || newBase > lettersLength) {    
+    if(initialBase > lettersLength || initialBase < 2 || newBase > lettersLength || newBase < 2) {
         //** Throw error message
-        throw "Base overload";  
+        throw "Base not supported";
 
     } else {
         for(char c : stringNumber) {
