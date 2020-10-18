@@ -8,9 +8,20 @@ inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase, 
     //Limit fractorial digits
     int fractorialLimit = 0;
     double number = std::stof(stringNumber);
+    int mapKey = 0;
+    std::map<float, int> periodicMap;
+    std::map<float, int>::iterator it;
 
     //** Loop till the number is 0 or the limit reach 5
-    while (number != 0 && fractorialLimit < 5) {
+    while (number != 0 && fractorialLimit < 8) {
+
+        it = periodicMap.find(std::floor(number * 1000) / 1000);
+        if(it != periodicMap.end()) {
+            break;
+        } else {
+            periodicMap[std::floor(number * 1000) / 1000] = mapKey;
+        }
+
         //** Multiply number by the new base
         number = number * newBase;
 
@@ -22,7 +33,7 @@ inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase, 
                 numberVector.push_back(letters[rest-10]);
             } else {
                 //** Insert in the result vecotor the intger part
-                numberVector.push_back(int(number) + '0');
+                numberVector.push_back(int(rest) + '0');
             }
 
             //** Remove intger part from the number
@@ -31,9 +42,12 @@ inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase, 
         } else {
             numberVector.push_back(0 + '0');
         }
+
         if(isFractorial)
             //** Increase limit value
             fractorialLimit++;
+
+        mapKey++;
     }
 
     //** Create an iterator for the vector
