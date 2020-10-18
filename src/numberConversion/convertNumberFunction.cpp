@@ -59,7 +59,7 @@ inline std::string devideNumberByBase(std::string& stringNumber, int newBase) {
             numberVector.push_back(letters[rest-10]);
         } else {
             //** Insert in the result vecotor the intger part
-            numberVector.push_back(number + '0');
+            numberVector.push_back(rest + '0');
         }
 
         number /= newBase;
