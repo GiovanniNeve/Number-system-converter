@@ -7,6 +7,7 @@
 #include <sstream>
 #include <complex.h>
 #include <cstring>
+#include <stdlib.h>
 
 //** Global static char array that contains alphabet
 extern char letters[26];
