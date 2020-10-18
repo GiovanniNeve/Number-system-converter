@@ -67,6 +67,9 @@ inline std::string devideNumberByBase(std::string& stringNumber, int newBase) {
     std::vector<char> numberVector;
     int number = std::stoi(stringNumber);
 
+    if(stringNumber == "0")
+        return stringNumber;
+
     while(number > 0) {
         int rest = number % newBase;
         if(rest > 9) {
