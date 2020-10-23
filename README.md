@@ -1,6 +1,6 @@
 # Number system converter
 
-This program convert an intger or fractorial number from a base to another
+This program convert a number from a base to another
 
 <br />
 
