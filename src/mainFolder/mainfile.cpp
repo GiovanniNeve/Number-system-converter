@@ -52,7 +52,7 @@ int main() {
             //** Convert number to ten base
             result = convertToTen(number, initialBase);
             //** Concert number to the new base
-            result = convertToNewBase(result, newBase);
+            std::cout << convertToNewBase(result, newBase);
         }
     } 
 
