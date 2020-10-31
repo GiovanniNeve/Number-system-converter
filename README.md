@@ -6,11 +6,8 @@ This program convert a number from a base to another
 
 # How to compile
 
-It is really simple to compile, make sure to have installed GCC compiler
+Sorry, I don't know
 
-```
-g++ mainfile.cpp -o mainfile.cpp
-
-```
+(JK, just build it as a project with CMakeList)
 
 <br />
