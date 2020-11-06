@@ -28,12 +28,15 @@ static std::string convertToTen(std::string stringNumber, int initialBase) {
         fractorialSum = convertToTenNumber(fractorialNumber, initialBase, 0);
 
     } else {
+        //** If the number is not a fractorial number, the whole number is intger
         intgerNumber = stringNumber;
 
     }
 
+    //** Get number converted to deciamal base
     intgerSum = convertToTenNumber(intgerNumber, initialBase, intgerNumber.length());
 
+    //** Put together intger and fractorial to get the result
     result = (fractorialSum != 0.0) ? std::to_string(intgerSum + fractorialSum) : std::to_string(intgerSum);
 
     return result;

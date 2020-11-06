@@ -103,7 +103,7 @@ inline double convertToTenNumber(std::string& number, int initialBase, int lengt
 
         //** Check if the number is an alphabet letter
         if (std::isalpha(c)) {
-            //** If so, find it in the lettes array returning his iterator
+            //** If so, find it in the letters array returning his iterator
             char* i = std::find(letters, end, c);
             //** Then calculate his intger value and insert in a vector
             decimalNumber.push_back(i-letters+10);
