@@ -6,6 +6,7 @@
  * * ------------------------------------------------------------
 */
 
+//** Include other files with functions
 #include "../numberCheck/numberCheck.cpp"
 #include "../numberConversion/convertToNewBase.cpp"
 #include "../numberConversion/convertToTen.cpp"
@@ -25,12 +26,15 @@ int main() {
         std::string result;
         int initialBase, newBase;
 
+        //** Get number from the user and store in a string
         std::cout << "Insert number: ";
         std::cin >> number;
 
+        //** Get the number initial base from the user
         std::cout << "Insert number's base: ";
         std::cin >> initialBase;
 
+        //** Get the number new base from the user
         std::cout << "Insert new base: ";
         std::cin >> newBase;
 
