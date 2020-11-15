@@ -58,7 +58,10 @@ int main() {
             //** Concert number to the new base
             std::cout << convertToNewBase(result, newBase);
         }
-    } 
+
+        std::cin.ignore();
+        std::cin.get();
+    }
 
     //** Catch condition
     catch(const char* error) {
