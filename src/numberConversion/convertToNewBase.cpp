@@ -23,7 +23,7 @@ static std::string convertToNewBase(std::string stringNumber, int newBase) {
         std::string floatNumber = stringTemp;
 
         //** Calculate new base numbers
-        floatNumber = multiplyNumberByBase(floatNumber, newBase, true);
+        floatNumber = multiplyNumberByBase(floatNumber, newBase);
         intNumber =   devideNumberByBase(intNumber, newBase);
 
         //** Put together the numbers and return

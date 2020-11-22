@@ -2,7 +2,7 @@
 #include "../include/includeLibrary.h"
 
 //** Multiply input number by the new base
-inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase, bool isFractorial) {
+inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase) {
     std::string result;
     std::vector<char> numberVector;
     //Limit fractorial digits
@@ -43,9 +43,8 @@ inline std::string multiplyNumberByBase(std::string& stringNumber, int newBase, 
             numberVector.push_back(0 + '0');
         }
 
-        if(isFractorial)
-            //** Increase limit value
-            fractorialLimit++;
+        //** Increase limit value
+        fractorialLimit++;
 
         mapKey++;
     }
