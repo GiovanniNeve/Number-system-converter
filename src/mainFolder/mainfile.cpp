@@ -18,54 +18,65 @@ int lettersLength = std::strlen(letters);
 
 //** Main
 int main() {
-    
+
+    std::string number;
+    std::string result;
+    int initialBase, newBase;
+    char loop = 'Y';
+
+    while (true) {
+
     //** Try condition
-    try {
+        try {
 
-        std::string number;
-        std::string result;
-        int initialBase, newBase;
+            //** Get number from the user and store in a string
+            std::cout << "Insert number: ";
+            std::cin >> number;
 
-        //** Get number from the user and store in a string
-        std::cout << "Insert number: ";
-        std::cin >> number;
+            //** Get the number initial base from the user
+            std::cout << "Insert number's base: ";
+            std::cin >> initialBase;
 
-        //** Get the number initial base from the user
-        std::cout << "Insert number's base: ";
-        std::cin >> initialBase;
+            //** Get the number new base from the user
+            std::cout << "Insert new base: ";
+            std::cin >> newBase;
 
-        //** Get the number new base from the user
-        std::cout << "Insert new base: ";
-        std::cin >> newBase;
+            //** Call numberCheck()
+            numberCheck(number, initialBase, newBase);
 
-        //** Call numberCheck()
-        numberCheck(number, initialBase, newBase);
+            //** Check if number has to be caonverted from base 10 to base under 10
+            if (initialBase==10 && newBase!=10) {
+                //** Call convertToUnderTenBase()
+                std::cout << convertToNewBase(number, newBase);
 
-        //** Check if number has to be caonverted from base 10 to base under 10
-        if (initialBase==10 && newBase!=10) {
-            //** Call convertToUnderTenBase()
-            std::cout << convertToNewBase(number, newBase);
+                //** Check if number has to be caonverted from base != 10 to base 10
+            }
+            else if (initialBase!=10 && newBase==10) {
+                //** Call convertToTen()
+                std::cout << convertToTen(number, initialBase);
 
-        //** Check if number has to be caonverted from base != 10 to base 10
-        } else if (initialBase != 10 && newBase == 10) {
-            //** Call convertToTen()
-            std::cout << convertToTen(number, initialBase);
+                //** Check if number has to be caonverted from base != 10 to base != 10
+            }
+            else if (initialBase!=10 && newBase!=10) {
+                //** Convert number to ten base
+                result = convertToTen(number, initialBase);
+                //** Concert number to the new base
+                std::cout << convertToNewBase(result, newBase);
+            }
 
-        //** Check if number has to be caonverted from base != 10 to base != 10
-        } else if(initialBase != 10 && newBase != 10) {
-            //** Convert number to ten base
-            result = convertToTen(number, initialBase);
-            //** Concert number to the new base
-            std::cout << convertToNewBase(result, newBase);
+            std::cout << "\nNew conversion? (Y/n): ";
+            std::cin.ignore();
+            std::cin.get(loop);
+
+            if(loop == 'n' || loop == 'N')
+                break;
+
+        }
+        //** Catch condition
+        catch(const char* error) {
+            std::cout << "\nAn error occured: " << error << ", try again...\n";
         }
 
-        std::cin.ignore();
-        std::cin.get();
-    }
-
-    //** Catch condition
-    catch(const char* error) {
-        std::cout << "\nAn error occured: " << error << std::endl;
     }
 
 return 0;
