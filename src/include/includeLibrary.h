@@ -5,9 +5,8 @@
 #include <cctype>
 #include <algorithm>
 #include <sstream>
-#include <complex.h>
+#include <complex>
 #include <cstring>
-#include <stdlib.h>
 #include <map>
 
 //** Global static char array that contains alphabet
