@@ -105,7 +105,7 @@ int main() {
         //** Catch condition
         catch (const std::exception& e) {
             F_PRINT;
-            std::cout << "Cought exception: " << e.what();
+            std::cout << "Caught exception: " << e.what();
             
             // Check if the user want to do another conversion
             F_PRINT;
@@ -132,7 +132,7 @@ int main() {
 
         catch (const char* error) {
             F_PRINT;
-            std::cout << "Cought exception: " << error;
+            std::cout << "Caught exception: " << error;
 
             // Check if the user want to do another conversion
             F_PRINT;
