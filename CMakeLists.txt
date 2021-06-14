@@ -3,6 +3,8 @@ project(numberSystemConverter)
 
 set(CMAKE_CXX_STANDARD 20)
 
+find_package (Threads REQUIRED)
+
 include_directories(src)
 include_directories(src/mainFolder)
 include_directories(src/numberConversion)
@@ -11,13 +13,14 @@ include_directories(src/include)
 include_directories(src/cli)
 
 add_executable(numberSystemConverter
-        src/mainFolder/mainfile.cpp
-        src/numberCheck/numberCheck.cpp
-        src/numberConversion/convertToNewBase.cpp
-        src/numberConversion/convertToTen.cpp
-        src/numberConversion/convertNumberFunction.cpp
-        src/include/includeLibrary.h
-        src/cli/terminalSize.cpp
-        src/cli/drawCLI.cpp
-        )
+src/mainFolder/mainfile.cpp
+src/numberCheck/numberCheck.cpp
+src/numberConversion/convertToNewBase.cpp
+src/numberConversion/convertToTen.cpp
+src/numberConversion/convertNumberFunction.cpp
+src/include/includeLibrary.h
+src/cli/terminalSize.cpp
+src/cli/drawCLI.cpp
+)
 
+target_link_libraries (numberSystemConverter ${CMAKE_THREAD_LIBS_INIT})

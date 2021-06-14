@@ -10,7 +10,6 @@
 #include "../numberCheck/numberCheck.cpp"
 #include "../numberConversion/convertToNewBase.cpp"
 #include "../numberConversion/convertToTen.cpp"
-#include "../cli/terminalSize.cpp"
 #include "../cli/drawCLI.cpp"
 
 
@@ -22,23 +21,21 @@ int lettersLength = std::strlen(letters);
 //** Main
 int main() {
 
-    std::string number;
-    std::string result;
+    std::string number = "";
+    std::string result = "";
     std::string outFileName = "out_file.txt";
-    int initialBase, newBase;
-    int *height = new int, *length = new int;
+    int initialBase = 0, newBase = 0;
     char choice = 'Y';
+    bool toDraw = false, end = false;
     std::fstream outFile;
+    std::thread thread(loopDraw, &outFileName, &number, &initialBase, &result, &newBase, &toDraw, &end);
 
     while (true) {
     //** Try condition
-        try {
-            getTerminalSize(length, height);
-            
-            draw(*length, *height, outFileName);
+        try {            
+            toDraw = true;
 
             //** Get number from the user and store in a string
-            std::cout << "Insert number: ";
             std::cin >> number;
             
             F_PRINT;
@@ -91,8 +88,18 @@ int main() {
 
             if(choice == 'n' || choice == 'N') {
                 print_object(0, 0, "\x1b[2J\x1b[0;0H");
+                end = true;
+
+                if(thread.joinable())
+                    thread.join();
+
                 return EXIT_SUCCESS;
             }
+
+            initialBase = 0;
+            newBase = 0;
+            number.erase();
+            result.erase();
         }
         
         //** Catch condition
@@ -109,8 +116,18 @@ int main() {
 
             if(choice == 'n' || choice == 'N') {
                 print_object(0, 0, "\x1b[2J\x1b[0;0H");
+                end = true;
+
+                if(thread.joinable())
+                    thread.join();
+
                 return EXIT_SUCCESS;
             }
+
+            initialBase = 0;
+            newBase = 0;
+            number.erase();
+            result.erase();
         }
 
         catch (const char* error) {
@@ -123,13 +140,22 @@ int main() {
             std::cout << "New conversion? (Y/n): ";
             std::cin.ignore();
             std::cin.get(choice);
+            result.erase();
 
             if(choice == 'n' || choice == 'N') {
                 print_object(0, 0, "\x1b[2J\x1b[0;0H");
+                end = true;
+
+                if(thread.joinable())
+                    thread.join();
+
                 return EXIT_SUCCESS;
             }
-        }
 
+            initialBase = 0;
+            newBase = 0;
+            number.erase();
+        }
     }
 
     return EXIT_SUCCESS;
