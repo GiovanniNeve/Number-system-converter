@@ -1,4 +1,4 @@
-# Number system converter
+# Number converter
 
 This program convert a number from a base to another
 
