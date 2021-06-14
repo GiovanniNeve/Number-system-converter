@@ -76,7 +76,7 @@ int main() {
             }
 
             outFile.open(outFileName, std::ios::app);
-            outFile << number << " (" << initialBase << ")  " << result << " (" << newBase << ")\n";
+            outFile << number << " (" << initialBase << ") -> " << result << " (" << newBase << ")\n";
             outFile.close();
 
             // Check if the user want to do another conversion

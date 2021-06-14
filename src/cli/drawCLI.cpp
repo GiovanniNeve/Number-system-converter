@@ -90,37 +90,40 @@ static void draw(int* length, int* height, std::string filename, std::string num
         print_object(history_index + (*length - history_index) / 2 - 9, 2, "CONVERSION HISTORY");
 
     file.open(filename);
-    int heightIdx = 0, idx = 0;
-    char tmp[500];
-    int arr_size = 15;
-    char** tmp_arr = new char*[arr_size];
 
-    while(!file.eof()) {
-        if(idx == arr_size) {
-            char** arr = new char*[arr_size*2];
-            for(int i=0; i < arr_size; i++) {
-                arr[i] = new char[strlen(tmp_arr[i]) + 2];
-                strcpy(arr[i], tmp_arr[i]);
+    if(!file.fail()) {
+        int heightIdx = 0, idx = 0;
+        char tmp[500];
+        int arr_size = 15;
+        char** tmp_arr = new char*[arr_size];
+
+        while(!file.eof()) {
+            if(idx == arr_size) {
+                char** arr = new char*[arr_size*2];
+                for(int i=0; i < arr_size; i++) {
+                    arr[i] = new char[strlen(tmp_arr[i]) + 2];
+                    strcpy(arr[i], tmp_arr[i]);
+                }
+
+                tmp_arr = arr;
+                arr_size *= 2;
             }
 
-            tmp_arr = arr;
-            arr_size *= 2;
+
+            file.getline(tmp, 500, '\n');
+            tmp_arr[idx] = new char[strlen(tmp) + 2];
+            strcpy(tmp_arr[idx], tmp);
+        
+            idx++;
         }
 
-
-        file.getline(tmp, 500, '\n');
-        tmp_arr[idx] = new char[strlen(tmp) + 2];
-        strcpy(tmp_arr[idx], tmp);
-    
-        idx++;
-    }
-
-    idx -= 2;
-    for(idx; idx >= 0; idx--) {
-        if(strlen(tmp_arr[idx]) + 6 <= history_len && heightIdx + 5 < *height-2)
-        {
-            print_object(history_index+3, 5+heightIdx, tmp_arr[idx]);
-            heightIdx += 2;
+        idx -= 2;
+        for(idx; idx >= 0; idx--) {
+            if(strlen(tmp_arr[idx]) + 6 <= history_len && heightIdx + 5 < *height-2)
+            {
+                print_object(history_index+3, 5+heightIdx, tmp_arr[idx]);
+                heightIdx += 2;
+            }
         }
     }
 
