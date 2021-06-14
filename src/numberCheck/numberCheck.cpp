@@ -32,7 +32,7 @@ static void numberCheck(std::string stringNumber, int initialBase, int newBase) 
                     std::string temp(1, c);
 
                     //** Convert string into int and compare with the base
-                    if (std::stoi(temp)>(initialBase-1)) {
+                    if (std::stoi(temp) > (initialBase-1)) {
                         //** Throw error message
                         throw "Base doesn't contain this number";
                     }

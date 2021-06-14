@@ -10,6 +10,9 @@
 #include "../numberCheck/numberCheck.cpp"
 #include "../numberConversion/convertToNewBase.cpp"
 #include "../numberConversion/convertToTen.cpp"
+#include "../cli/terminalSize.cpp"
+#include "../cli/drawCLI.cpp"
+
 
 //** Initialization of global variables
 char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
@@ -21,64 +24,113 @@ int main() {
 
     std::string number;
     std::string result;
+    std::string outFileName = "out_file.txt";
     int initialBase, newBase;
-    char loop = 'Y';
+    int *height = new int, *length = new int;
+    char choice = 'Y';
+    std::fstream outFile;
 
     while (true) {
-
     //** Try condition
         try {
+            getTerminalSize(length, height);
+            
+            draw(*length, *height, outFileName);
 
             //** Get number from the user and store in a string
             std::cout << "Insert number: ";
             std::cin >> number;
-
+            
+            F_PRINT;
             //** Get the number initial base from the user
             std::cout << "Insert number's base: ";
             std::cin >> initialBase;
 
+            F_PRINT;
             //** Get the number new base from the user
             std::cout << "Insert new base: ";
             std::cin >> newBase;
 
             //** Call numberCheck()
             numberCheck(number, initialBase, newBase);
-
+            
             //** Check if number has to be caonverted from base 10 to base under 10
             if (initialBase==10 && newBase!=10) {
+                F_PRINT;
                 //** Call convertToUnderTenBase()
-                std::cout << convertToNewBase(number, newBase);
-
-                //** Check if number has to be caonverted from base != 10 to base 10
+                result = convertToNewBase(number, newBase);
+                std::cout << result << "\n\n";
             }
+            //** Check if number has to be caonverted from base != 10 to base 10
             else if (initialBase!=10 && newBase==10) {
+                F_PRINT;
                 //** Call convertToTen()
-                std::cout << convertToTen(number, initialBase);
-
-                //** Check if number has to be caonverted from base != 10 to base != 10
+                result = convertToTen(number, initialBase);
+                std::cout << result << "\n\n";
             }
+            //** Check if number has to be caonverted from base != 10 to base != 10
             else if (initialBase!=10 && newBase!=10) {
                 //** Convert number to ten base
                 result = convertToTen(number, initialBase);
+                F_PRINT;
                 //** Concert number to the new base
-                std::cout << convertToNewBase(result, newBase);
+                result = convertToNewBase(result, newBase);
+                std::cout << result << "\n\n";
             }
 
-            std::cout << "\nNew conversion? (Y/n): ";
+            outFile.open(outFileName, std::ios::app);
+            outFile << number << " (" << initialBase << ")  " << result << " (" << newBase << ")\n";
+            outFile.close();
+
+            // Check if the user want to do another conversion
+            F_PRINT;
+    
+            std::cout << "New conversion? (Y/n): ";
             std::cin.ignore();
-            std::cin.get(loop);
+            std::cin.get(choice);
 
-            if(loop == 'n' || loop == 'N')
-                break;
-
+            if(choice == 'n' || choice == 'N') {
+                print_object(0, 0, "\x1b[2J\x1b[0;0H");
+                return EXIT_SUCCESS;
+            }
         }
+        
         //** Catch condition
-        catch(const char* error) {
-            std::cout << "\nAn error occured: " << error << ", try again...\n";
+        catch (const std::exception& e) {
+            F_PRINT;
+            std::cout << "Cought exception: " << e.what();
+            
+            // Check if the user want to do another conversion
+            F_PRINT;
+    
+            std::cout << "New conversion? (Y/n): ";
+            std::cin.ignore();
+            std::cin.get(choice);
+
+            if(choice == 'n' || choice == 'N') {
+                print_object(0, 0, "\x1b[2J\x1b[0;0H");
+                return EXIT_SUCCESS;
+            }
+        }
+
+        catch (const char* error) {
+            F_PRINT;
+            std::cout << "Cought exception: " << error;
+
+            // Check if the user want to do another conversion
+            F_PRINT;
+    
+            std::cout << "New conversion? (Y/n): ";
+            std::cin.ignore();
+            std::cin.get(choice);
+
+            if(choice == 'n' || choice == 'N') {
+                print_object(0, 0, "\x1b[2J\x1b[0;0H");
+                return EXIT_SUCCESS;
+            }
         }
 
     }
 
-return 0;
-
+    return EXIT_SUCCESS;
 }
