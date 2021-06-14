@@ -4,10 +4,17 @@ This program convert a number from a base to another
 
 <br />
 
+# Responsive CLI
+
+![Alt Text](https://github.com/Zambo-dev/Number-system-converter/blob/master/showcase/CLIexample.gif)
+
 # How to compile
 
-Sorry, I don't know
+```bash
+# Open the terminal into the folder and run these two commands
+cmake .
 
-(JK, just build it as a project with CMakeList)
+make
+```
 
 <br />
